@@ -8,6 +8,10 @@ services:
       - '.:/rawleydotxyz'
     ports:
       - '8080:8080'
+    links:
+      - db
+    depends_on:
+      - db
   
   db:
     image: mariadb:10.7.4
