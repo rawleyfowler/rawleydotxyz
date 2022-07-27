@@ -10,7 +10,7 @@ services:
       - '8080:8080'
   
   db:
-    image: mariadb:apline
+    image: mariadb:alpine
     volumes:
       - './dump.sql:/docker-entrypoint-initdb.d/dump.sql'
     restart: always
