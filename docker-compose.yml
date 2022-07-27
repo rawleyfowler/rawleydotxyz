@@ -16,7 +16,8 @@ services:
   db:
     image: mariadb:10.7.4
     environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: "yes"
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_MYSQL_LOCALHOST_USER: ${DB_USER}
     volumes:
       - './dump.sql:/docker-entrypoint-initdb.d/dump.sql'
     restart: always
