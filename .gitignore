@@ -8,3 +8,4 @@ admin_hash.pem
 create_admin_form.html
 error.log
 nginx/
+*.sql

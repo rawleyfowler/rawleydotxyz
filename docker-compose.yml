@@ -4,10 +4,14 @@ services:
     build:
       context: .
     restart: unless-stopped
+    volumes:
+      - '.:/rawleydotxyz'
     ports:
-      - "8080:8080"
+      - '8080:8080'
   
   db:
     image: mariadb:apline
+    volumes:
+      - './dump.sql:/docker-entrypoint-initdb.d/dump.sql'
     restart: always
-    expose: ["3306"]
+    expose: ['3306']
