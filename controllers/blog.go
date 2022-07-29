@@ -22,6 +22,7 @@ import (
 	"text/template"
 
 	"github.com/gin-gonic/gin"
+	"github.com/rawleyfowler/rawleydotxyz/models"
 	"github.com/rawleyfowler/rawleydotxyz/repos"
 )
 
@@ -50,11 +51,13 @@ func (bc *BlogController) IndexBlogPage(c *gin.Context) {
 		return
 	}
 
+	newPosts := make([]models.BlogPost, len(*posts))
 	for _, post := range *posts {
 		post.Date = strings.Split(post.Date, " ")[0]
+		newPosts = append(newPosts, post)
 	}
 
-	c.HTML(http.StatusOK, "blog.tmpl", *posts)
+	c.HTML(http.StatusOK, "blog.tmpl", newPosts)
 }
 
 func (bc *BlogController) IndividualBlogPage(c *gin.Context) {
