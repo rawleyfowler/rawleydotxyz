@@ -49,6 +49,11 @@ func (bc *BlogController) IndexBlogPage(c *gin.Context) {
 		c.HTML(http.StatusInternalServerError, "internal_server_error.tmpl", &gin.H{})
 		return
 	}
+
+	for _, post := range *posts {
+		post.Date = strings.Split(post.Date, " ")[0]
+	}
+
 	c.HTML(http.StatusOK, "blog.tmpl", *posts)
 }
 
